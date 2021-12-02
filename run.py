@@ -13,6 +13,7 @@ inputname = sys.argv[1]
 
 horizontal = 0
 depth = 0
+aim = 0
 
 with open(inputname, "r") as inf:
     for line in inf:
@@ -21,10 +22,11 @@ with open(inputname, "r") as inf:
         amount = int(instruction[1])
         if instruction[0] == "forward":
             horizontal += amount
+            depth += aim * amount
         elif instruction[0] == "up":
-            depth -= amount
+            aim -= amount
         elif instruction[0] == "down":
-            depth += amount
+            aim += amount
 
     print(horizontal*depth)
 
